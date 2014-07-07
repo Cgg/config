@@ -37,6 +37,13 @@ else
   gem install --user-install lolcat
 fi
 
+if which tig
+then
+  echo "tig installed."
+else
+  sudo apt-get install -y tig
+fi
+
 if [ ! -n "$ZSH" ]
 then
   ZSH=~/.oh-my-zsh
