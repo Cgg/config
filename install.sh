@@ -88,6 +88,14 @@ else
   cd ..
 fi
 
+if redshift --version
+then
+  echo "redshift installed."
+else
+  echo "Installing redshift..."
+  sudo apt-get install -y redshift
+fi
+
 echo "Installing fortune prompt..."
 FPROMPT=~/bin/fortune-prompt.sh
 if link_exist $FPROMPT; then rm $FPROMPT; fi
