@@ -1,0 +1,58 @@
+[user]
+	name = Cgg
+	email = clement.geiger@gmail.com
+[color]
+	ui = true
+[core]
+	editor = vim
+[alias]
+  st = status
+  ci = commit
+  co = checkout
+  addp = add -p
+  cfg = config
+  dif = diff -C -w
+  difi = diff -C --cached -w
+  difs = diff -C --stat -w
+  difis = diff -C --stat --cached -w
+  diffi = diff -C --cached -w
+  diffp = diff --no-color -p
+  cat = cat-file
+  ls = ls-tree
+  sm-init = submodule init
+  sm = submodule
+  smst = submodule status
+  smup = submodule update
+  br = branch
+  bra = branch -a
+  diffip = diff --no-color -p --cached
+  # Push only the current branch
+  pushc = !"f() { mybranch=$(git cbr); git push origin \"$mybranch\"; }; f"
+  pushfc = !"f() { mybranch=$(git cbr); git push -f origin \"$mybranch\"; }; f"
+  # Diff and log between the origin and the local branch
+  rdiff = !"f() { mybranch=$(git cbr); git dif origin/\"$mybranch\"..\"$mybranch\"; }; f"
+  rlog = !"f() { mybranch=$(git cbr); git log origin/\"$mybranch\"..\"$mybranch\"; }; f"
+  rlogp = !"f() { mybranch=$(git cbr); git log -p origin/\"$mybranch\"..\"$mybranch\"; }; f"
+  rbi = rebase --interactive
+  rbc = rebase --continue
+  rba = rebase --abort
+  rbs = rebase --skip
+  blame = blame -w
+  lcfg = config --list
+  # Current branch
+  cbr = !"f() { git branch --no-color | sed -ne '/^\\* */s///p'; }; f"
+  # New branch
+  nbr = !"f() { test ! "x$1x" = xx && git br $1 && git push origin $1 && git br -d $1 && git cob $1; }; f"
+  # Delete branch
+  dbr = !"f() { test ! "x$1x" = xx && echo \"Deleting $1\" && git push origin :refs/heads/$1 && git br -D $1; }; f"
+  # Checkout --track -b
+  cob = !"f() { echo \"Checkout branch origin/$1\"; git checkout --track -b $1 origin/$1; }; f"
+  # Fetch/rebase
+  fr = !"f() { test ! "x$1x" = xx && echo \"Fetch/rebase on origin/$1\" && git fetch && git rebase origin/$1; }; f"
+  # Fetch/rebase on current branch
+  frc = !"f() { mybranch=$(git cbr); git fr \"$mybranch\"; }; f"
+  # Rebase on current branch
+  rc = !"f() { mybranch=$(git cbr); git rebase \"origin/$mybranch\"; }; f"
+  # diff branch
+  dbk = !"f() { gitk "master...$1"; }; f"
+  lop = log -C -b -w -p
