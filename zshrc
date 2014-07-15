@@ -39,6 +39,7 @@ export PATH=/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/u
 
 # augment PATH with my personal bin/ folder
 export PATH=$PATH:/home/cgg/bin
+export PATH=/home/cgg/.local/bin:$PATH
 export PATH=$PATH:/home/cgg/Private/common/git
 export PATH=$PATH:/home/cgg/.gem/ruby/1.9.1/bin
 
