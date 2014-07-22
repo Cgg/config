@@ -57,6 +57,6 @@
   dbk = !"f() { gitk "master...$1"; }; f"
   lop = log -C -b -w -p
 [push]
-	default = matching
+	default = simple
 [credential]
 	helper = cache --timeout=3600
