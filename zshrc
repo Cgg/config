@@ -49,6 +49,7 @@ alias la='ls -la'
 alias make='make -j8'
 alias gitka='gitk --all'
 alias ssh='eval $(/usr/bin/keychain --eval --agents ssh -Q --quiet .ssh/id_rsa) && ssh'
+alias xlock='gnome-screensaver-command -l'
 
 # to use ccache
 export PATH="/usr/lib/ccache/bin/:$PATH"
