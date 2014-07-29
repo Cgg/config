@@ -88,7 +88,7 @@ else
   cd ..
 fi
 
-if redshift --version
+if which gtk-redshift
 then
   echo "redshift installed."
 else
