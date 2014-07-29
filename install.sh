@@ -5,8 +5,8 @@ then
   mkdir ~/bin
 fi
 
-link_exist() {
-  if [ -h $1 ]
+link_or_file_exist() {
+  if [ -h $1 ] || [ -f $1 ]
   then
     return 0
   fi
@@ -82,7 +82,7 @@ else
   cd the_silver_searcher
   ./build.sh
   AG=~/bin/ag
-  if link_exist $AG; then rm $AG; fi
+  if link_or_file_exist $AG; then rm $AG; fi
   ln -s `pwd`/ag ~/bin/ag
   rehash
   cd ..
@@ -98,17 +98,17 @@ fi
 
 echo "Installing fortune prompt..."
 FPROMPT=~/bin/fortune-prompt.sh
-if link_exist $FPROMPT; then rm $FPROMPT; fi
+if link_or_file_exist $FPROMPT; then rm $FPROMPT; fi
 ln -s `pwd`/bin/fortune-prompt.sh $FPROMPT
 
 echo "Installing zshrc..."
 ZSHRC=~/.zshrc
-if link_exist $ZSHRC; then rm $ZSHRC; fi
+if link_or_file_exist $ZSHRC; then rm $ZSHRC; fi
 ln -s `pwd`/zshrc $ZSHRC
 
 echo "Installing gitconfig..."
 GITCFG=~/.gitconfig
-if link_exist $GITCFG; then rm $GITCFG; fi
+if link_or_file_exist $GITCFG; then rm $GITCFG; fi
 ln -s  `pwd`/gitconfig $GITCFG
 
 echo "Done."
